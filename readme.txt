@@ -6,7 +6,7 @@ Features:-
   
 1. No need to create an IE Instance.
   
-2. Just include my gem and use it's parameterized functions some of which are given as follows:-
+2. Just include this gem and use it's parameterized functions some of which are given as follows:-
 
      # goto_page("http://www.google.com")
      
