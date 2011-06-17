@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://www.netbeans.org/ns/project/1">
+    <type>org.netbeans.modules.ruby.rubyproject</type>
+    <configuration>
+        <data xmlns="http://www.netbeans.org/ns/ruby-project/1">
+            <name>watir_helper</name>
+            <source-roots/>
+            <test-roots/>
+        </data>
+        <spellchecker-wordlist xmlns="http://www.netbeans.org/ns/spellchecker-wordlist/1">
+            <word>AutoItX</word>
+            <word>btnG</word>
+            <word>cd</word>
+            <word>dll</word>
+            <word>http</word>
+            <word>regsvr</word>
+            <word>texfield</word>
+            <word>watir</word>
+            <word>website</word>
+        </spellchecker-wordlist>
+    </configuration>
+</project>
