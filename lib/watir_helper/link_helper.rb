@@ -1,29 +1,28 @@
-require 'watir_helper/common_helpers'
+#******************************************************
+#Link methods
+#******************************************************
+require '../lib/watir_helper/common_helpers'
 
 module LinkHelper
 
 #Click a link.    
-def click_link(property,propertyvalue)
-  propertyvalue=/#{propertyvalue}/
-  $ie.link(property.intern,propertyvalue).click
+def click_link(browser_handle, property, property_value)
+  browser_handle.link(property.intern, /#{property_value}/).click
 end
 
 #Click a link ,after clicking which a pop-up will come.
-def click_link_with_popup(property,propertyvalue)
-  propertyvalue=/#{propertyvalue}/
-  $ie.link(property.intern,propertyvalue).click_no_wait
+def click_link_with_popup(browser_handle, property, property_value)
+  browser_handle.link(property.intern, /#{property_value}/).click_no_wait
 end
 
 #Highlight or Flash a link.  
-def flash_link(property,propertyvalue)
-  propertyvalue=/#{propertyvalue}/
-  $ie.link(property.intern,propertyvalue).flash
+def flash_link(browser_handle, property, property_value)
+  browser_handle.link(property.intern, /#{property_value}/).flash
 end
 
 #Check whether a link exists or not.
-def exists_link(property,propertyvalue)
-  propertyvalue=/#{propertyvalue}/
-  $ie.link(property.intern,propertyvalue).exists?
+def exists_link?(browser_handle, property, property_value)
+  browser_handle.link(property.intern, /#{property_value}/).exists?
 end
 
 end

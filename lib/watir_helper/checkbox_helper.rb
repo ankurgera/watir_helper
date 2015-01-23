@@ -1,35 +1,33 @@
-require 'watir_helper/common_helpers'
+#******************************************************
+#CheckBox methods
+#******************************************************
+require '../lib/watir_helper/common_helpers'
 
 module CheckBoxHelper
 
 #Click a checkbox.   
-def click_checkbox(property,propertyvalue)
-  propertyvalue=/#{propertyvalue}/
- $ie.checkbox(property.intern,propertyvalue).set
+def click_checkbox(browser_handle, property, property_value)
+  browser_handle.checkbox(property.intern, /#{property_value}/).set
 end
 
 #Clear a checkbox.   
-def clear_checkbox(property,propertyvalue)
-  propertyvalue=/#{propertyvalue}/
-  $ie.checkbox(property.intern,propertyvalue).clear
+def clear_checkbox(browser_handle, property, property_value)
+  browser_handle.checkbox(property.intern, /#{property_value}/).clear
 end
 
 #Highlight or Flash a checkbox.   
-def flash_checkbox(property,propertyvalue)
-  propertyvalue=/#{propertyvalue}/
- $ie.checkbox(property.intern,propertyvalue).flash
+def flash_checkbox(browser_handle, property, property_value)
+  browser_handle.checkbox(property.intern, /#{property_value}/).flash
 end
 
 #Check whether a checkbox exists or not.
-def exists_checkbox(property,propertyvalue)
-  propertyvalue=/#{propertyvalue}/
- $ie.checkbox(property.intern,propertyvalue).exists?
+def exists_checkbox?(browser_handle, property, property_value)
+  browser_handle.checkbox(property.intern, /#{property_value}/).exists?
 end
 
 #Check whether a checkbox is checked/set or not.
-def is_checked_checkbox(property,propertyvalue)
-  propertyvalue=/#{propertyvalue}/
- $ie.checkbox(property.intern,propertyvalue).checked?
+def is_checkbox_checked?(browser_handle, property, property_value)
+  browser_handle.checkbox(property.intern, /#{property_value}/).checked?
 end
 
 end

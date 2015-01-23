@@ -1,9 +1,13 @@
-require 'watir'
+#******************************************************
+#Common Helpers
+#******************************************************
 require 'rubygems'
+require 'watir'
+require 'rautomation'
+require '../lib/watir_helper/data_type_validations'
+include DataTypeValidationsHelper
 
-
-#Create a new instance of IE. 
-$ie=Watir::IE.new
-#Initialize variable "settext" with the value nil.
-$settext=nil
+#Variable "settext" initialized with the value nil.
+#This variable will be used for storing data supplied by user in a text field.
+$settext = nil
 

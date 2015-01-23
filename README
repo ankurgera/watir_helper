@@ -1,12 +1,13 @@
 About this Utility:
     
-This is a utility(watir_helper) developed for making Automation Testing faster, simpler and easier through WATIR.
+This is a utility developed for for writing Automation Test Scripts faster, simpler and easier through WATIR.
 
 Features:-
   
 1. No need to create an IE Instance.
   
-2. Just include this gem and use it's parameterized functions some of which are given as follows:-
+2. Just include this gem and use it's parameterized methods(some of which are given as follows) :-
+     # require 'watir_helper'
 
      # goto_page("http://www.google.com")
      
@@ -20,21 +21,12 @@ Features:-
     
   Due to this feature Automation Testing task will be easier and faster because we have to just use the functions of this gem.
   
-3. All the functions are available in the lib/watir_helper folder for different type of elements of a website.
+3. All the methods are available in the lib/watir_helper folder for different type of elements of a website.
   
-4. Pop-up handling is easy using given parameterized functions in this gem.
+4. Pop-up handling is very easy, you have to just use one line named method's of this gem and boom you can easily
+   handle pop-up's. It's that easy.
   
-5. To enable the Pop-up handling, execute the following steps on your command prompt :-
-    
-   - cd C:\ruby\lib\ruby\gems\1.8\gems\watir-1.6.2\lib\watir (watir path)
-    
-   - regsvr32 AutoItX3.dll
-    
-   - You will get a pop-up of successful registration , press "OK" button on it.
-   
-   Now, You can easily handle pop-up's.
-  
-6. Can add functions into this gem as WATIR is an Open Source tool.
+5. Can add new features into this gem as WATIR is an Open Source tool.
   
   
 Prerequisites:
@@ -67,23 +59,19 @@ How To Use:
 
 Typical Usage :
    
-     # include my utility(watir_helper)
+     # Include my utility(watir_helper)
    
         require 'watir_helper'
    
-     # include the module inside it
-   
-        include WatirHelper
-   
-     # Go to the Google home page
+     # Supply Google url to goto_page
    
         goto_page("http://www.google.com/")
    
-     # print Title 
+     # Display title of the current browser page
    
         puts get_title
    
-     # print Url
+     # Display url of the current browser page
    
         puts get_url
    
@@ -93,7 +81,7 @@ Typical Usage :
    
      # Check whether Google logo image exists or not
    
-        puts exists_image("id","logo")
+        puts exists_image?("id","logo")
    
      # Set the search field to Ruby
    
@@ -107,24 +95,6 @@ Typical Usage :
    
         click_button("value","Google Search")
 
-
-Pop Up's Support :-
-
- Watir now optionally installs AutoIt - http://www.autoitscript.com/
-   
- This is the preferred method for dealing with pop-up's, file requesters etc.
-
- To enable the same, execute the following steps on your command prompt :-
-  
-   - cd C:\ruby\lib\ruby\gems\1.8\gems\watir-1.6.2\lib\watir (watir path)
-  
-   - regsvr32 AutoItX3.dll
-  
-   - You will get a pop-up of successful registration , press "OK" button on it.
- 
-  Now,You can easily handle pop-up's. 
-
-  
 Contacts:
     
   The mailing list: http://groups.google.com/group/watir-general

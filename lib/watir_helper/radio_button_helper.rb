@@ -1,35 +1,33 @@
-require 'watir_helper/common_helpers'
+#******************************************************
+#Radio Button methods
+#******************************************************
+require '../lib/watir_helper/common_helpers'
 
 module RadioButtonHelper
 
 #Click a radio button.    
-def click_radio_button(property,propertyvalue)
-  propertyvalue=/#{propertyvalue}/
- $ie.radio(property.intern,propertyvalue).set
+def click_radio_button(browser_handle, property, property_value)
+  browser_handle.radio(property.intern, /#{property_value}/).set
 end
 
 #Clear a radio button.    
-def clear_radio_button(property,propertyvalue)
-  propertyvalue=/#{propertyvalue}/
-  $ie.radio(property.intern,propertyvalue).clear
+def clear_radio_button(browser_handle, property, property_value)
+  browser_handle.radio(property.intern, /#{property_value}/).clear
 end
 
 #Highlight or Flash a radio button.  
-def flash_radio_button(property,propertyvalue)
-  propertyvalue=/#{propertyvalue}/
- $ie.radio(property.intern,propertyvalue).flash
+def flash_radio_button(browser_handle, property, property_value)
+  browser_handle.radio(property.intern, /#{property_value}/).flash
 end
 
 #Check whether a radio button exists or not.
-def exists_radio_button(property,propertyvalue)
-  propertyvalue=/#{propertyvalue}/
- $ie.radio(property.intern,propertyvalue).exists?
+def exists_radio_button?(browser_handle, property, property_value)
+  browser_handle.radio(property.intern, /#{property_value}/).exists?
 end
 
 #Check whether a radio button is checked or not.
-def is_checked_radio_button(property,propertyvalue)
-  propertyvalue=/#{propertyvalue}/
- $ie.radio(property.intern,propertyvalue).checked?
+def is_radio_button_checked?(browser_handle, property, property_value)
+  browser_handle.radio(property.intern, /#{property_value}/).checked?
 end
 
 end

@@ -1,41 +1,38 @@
-require 'watir_helper/common_helpers'
+#******************************************************
+#Div methods
+#******************************************************
+require '../lib/watir_helper/common_helpers'
 
 module DivHelper
 
 #Click a div.
-def click_div(property,propertyvalue)
-   propertyvalue=/#{propertyvalue}/
-  $ie.div(property.intern,propertyvalue).click
+def click_div(browser_handle, property, property_value)
+  browser_handle.div(property.intern, /#{property_value}/).click
 end
 
 #Click a div, after clicking which a pop-up will come.
-def click_div_with_popup(property,propertyvalue)
-  propertyvalue=/#{propertyvalue}/
-  $ie.div(property.intern,propertyvalue).click_no_wait
+def click_div_with_popup(browser_handle, property, property_value)
+  browser_handle.div(property.intern, /#{property_value}/).click_no_wait
 end
 
 #Double Click a div.
-def double_click_div(property,propertyvalue)
-  propertyvalue=/#{propertyvalue}/
- $ie.div(property.intern,propertyvalue).fire_event("ondblclick")
+def double_click_div(browser_handle, property, property_value)
+  browser_handle.div(property.intern, /#{property_value}/).fire_event("ondblclick")
 end
 
 #Double Click a div, after clicking which a pop-up will come.
-def double_click_div_with_popup(property,propertyvalue)
-  propertyvalue=/#{propertyvalue}/
-  $ie.div(property.intern,propertyvalue).fire_event_no_wait("ondblclick")
+def double_click_div_with_popup(browser_handle, property, property_value)
+  browser_handle.div(property.intern, /#{property_value}/).fire_event_no_wait("ondblclick")
 end
 
 #Highlight or Flash a div.
-def flash_div(property,propertyvalue)
-  propertyvalue=/#{propertyvalue}/
-  $ie.div(property.intern,propertyvalue).flash
+def flash_div(browser_handle, property, property_value)
+  browser_handle.div(property.intern, /#{property_value}/).flash
 end
 
 #Check whether a div exists or not.
-def exists_div(property,propertyvalue)
-  propertyvalue=/#{propertyvalue}/
-  $ie.div(property.intern,propertyvalue).exists?
+def exists_div?(browser_handle, property, property_value)
+  browser_handle.div(property.intern, /#{property_value}/).exists?
 end
 
 end

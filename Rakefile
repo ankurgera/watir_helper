@@ -11,7 +11,7 @@ spec = Gem::Specification.new do |s|
   s.author = "Ankur Gera"
   s.email = "ankurgera@gmail.com"
   s.platform = Gem::Platform::RUBY
-  s.summary = "A utility for making Automation Testing faster, simpler and easier."
+  s.summary = "A utility for writing Automation Test Scripts faster, simpler and easier."
   s.files = FileList["{lib}/**/*"].to_a
   s.require_path = "lib"
   s.test_files = FileList["{test}/**/*.rb"].to_a
@@ -19,7 +19,7 @@ spec = Gem::Specification.new do |s|
   s.extra_rdoc_files = ["README"]
 end
 
-Rake::GemPackageTask.new(spec) do |pkg|
+Rake::PackageTask.new(spec) do |pkg|
   pkg.gem_spec = spec
   pkg.need_tar = true
   pkg.need_zip = true
