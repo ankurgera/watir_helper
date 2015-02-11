@@ -2,39 +2,39 @@ require '../lib/watir_helper.rb'
 
 ie = set_browser("ie")
 goto_page(ie, "http://www.google.com/")
-# puts get_title
-# puts get_url
-# flash_div("id", "hplogo")
-# exists_div?("id", "hplogo")
-# is_blank_textfield?()
-# set_textfield("name", "q", 100)
-# is_blank_textfield?()
-# is_value?(100)
-# puts age_in_the_range?(1, 100)
-# flash_button("name","btnG")
-# click_button("name","btnG")
-
-# goto_page("http://qahome.intranet.mckinsey.com/prc/ganttsummaryv2/fmno/48336")
-# flash_link("href", "/prc/ganttsummaryv2/fmno/48336.xls")
-# click_link_with_popup("href", "/prc/ganttsummaryv2/fmno/48336.xls")
-# puts "====================== File Download =========================="
-# puts click_save_file_dialog_popup("File Download")
-# puts "====================== Save =========================="
-# puts click_save_saveas_popup("Save","C:\\Aboagye_48336_EY14_UT_PRC_OCT_Gantt_Summary_report.xls")
-# puts "======================"
-# window2 = RAutomation::Window.new(:title => /#{"Confirm Save"}/)
-# window2.activate
-# puts window2.exists?
-# puts window2.visible?
-# all_windows = RAutomation::Window.windows
-# all_windows.each {|window| puts "handle: #{window.hwnd}, title: #{window.title}"}
-# click_yes_js_popup("Confirm Save") if(popup_exists_with_title?("Confirm Save"))
-# puts "======================"
-# puts get_title
-# puts get_url
-
+get_title(ie)
+get_url(ie)
+flash_div(ie, "id", "hplogo")
+exists_div?(ie, "id", "hplogo")
+puts is_blank_textfield?(ie, "name", "q")
+set_textfield(ie, "name", "q", 100)
+puts is_blank_textfield?(ie, "name", "q")
+puts textfield_contains_value?(ie, "name", "q", "100")
+puts textfield_contains_value?(ie, "name", "q", "101")
+puts age_in_the_range?(1, 100)
+flash_button(ie, "name","btnG")
+click_button(ie, "name","btnG")
 close_browser(ie)
-close_browser($ie)
-#Confirm Save
-
-
+# puts is_string_contains_reg_exp?("ankurgera@gmail.com", /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/)
+# puts is_string_contains_another_string?("abc123@gmail.com", "3@g")
+# puts is_string_contains_another_string?("abc123@gmail.com", "13@g")
+# puts valid_indian_landline_number?('0130-3030303')
+# puts valid_mmddyyyy_date_format?(02-10-2015)
+# puts valid_mmddyyyy_date_format?("02-10-2015")
+# puts valid_mmddyyyy_date_format?("22-10-2015")
+# puts valid_ddmmyyyy_date_format?(10-02-2015)
+# puts valid_ddmmyyyy_date_format?("10-02-2015")
+# puts valid_ddmmyyyy_date_format?("42-10-2015")
+# puts valid_age?(100)
+# puts valid_age?("100")
+# puts valid_age?(-100)
+# puts valid_age?(0)
+# puts valid_email_id?("abc123@gmail.com")
+# puts valid_email_id?("abc123gmail.com")
+# puts valid_email_id?(23)
+# puts valid_indian_mobile_number?(9123456789)
+# puts valid_indian_mobile_number?("9123456789")
+# puts valid_indian_mobile_number?("91234567890")
+# puts valid_indian_landline_number?(01303030303)
+# puts valid_indian_landline_number?('0130-3030303')
+# puts valid_indian_landline_number?('0130-30303030')

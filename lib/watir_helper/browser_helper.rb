@@ -6,6 +6,7 @@ require '../lib/watir_helper/common_helpers'
 module BrowserHelper
 
 #Set a browser.
+#For e.g set_browser("ie")
 def set_browser(browser_name)
   Watir::Browser.new browser_name.intern	
 end

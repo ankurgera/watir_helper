@@ -20,7 +20,7 @@ def double_click_button(browser_handle, property, property_value)
   browser_handle.button(property.intern, /#{property_value}/).fire_event("ondblclick")
 end
 
-#Double Click a button ,after clicking which a pop-up will come.  
+#Double Click a button, after clicking it a pop-up will come.  
 def double_click_button_with_popup(browser_handle, property, property_value)
   browser_handle.button(property.intern, /#{property_value}/).fire_event_no_wait("ondblclick")
 end

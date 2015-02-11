@@ -5,137 +5,141 @@ require '../lib/watir_helper/common_helpers'
 
 module ValidationsHelper
 
-#Check whether a character range is present in a textfield or not.  
-def chars_range_exists?(range_start, range_end)
-  if(is_char?(range_start) and is_char?(range_end) and (range_start <= range_end))
-   $settext.gsub(/[#{range_start}-#{range_end}]/, '*').index('*') ? true : false
-  else
-   puts "Please enter a valid range(like (0,9) or (a,z) etc.)"
-  end
+#Invalid date format message
+def invalid_date_error_type(err_type, obj_type)
+  (err_type == "format") ? (puts "Invalid #{obj_type.downcase} format.") : (puts "#{obj_type} should be a String.")
+  return false
 end
 
-#Check whether a substring is present in a textfield or not.  
-def contains_sub_string?(sub_string)
-  if(is_string?(sub_string))
-   $settext.sub(sub_string, '*').index('*') ? true : false
-  else
-   puts "Parameter value passed should be a string"
-  end
+#String contains regular expression or not.
+def string_contains_reg_exp?(char_string, reg_exp)
+  (char_string =~ reg_exp).nil?
+end
+
+#Data passed is in valid format or not.
+def is_valid_data_with_format?(date, reg_ex_date, obj_type)
+  is_string?(date) ? (string_contains_reg_exp?(date, reg_ex_date) ? invalid_date_error_type("format", obj_type) : true) : invalid_date_error_type("data type", obj_type)
 end
 
 #Check whether a date is in mmddyyyy format or not.  
-def valid_date_format_mmddyyyy(date)
- if(is_string?(date))
-  if(date =~ /^(0[1-9]|1[012])[- \/.](0[1-9]|[12][0-9]|3[01])[- \/.](19|20)\d\d$/).nil?
-    puts "Invalid Date(mmddyyyy) Format"
-  else
-    puts "Valid Date(mmddyyyy) Format"
-  end
- else
-    puts "Error: Date value passed should be a string"
- end
+#Valid date format "02/10/2015", "02-10-2015" and "02.10.2015". 
+#For e.g valid_mmddyyyy_date_format?(02-10-2015) will return false(and
+#print message 'Date should be a String.')
+#and valid_mmddyyyy_date_format?("02-10-2015") will return true
+#and valid_mmddyyyy_date_format?("22-10-2015") will return false(and
+#print message 'Invalid date format.')
+def valid_mmddyyyy_date_format?(date)
+  is_valid_data_with_format?(date, /^(0[1-9]|1[012])[- \/.](0[1-9]|[12][0-9]|3[01])[- \/.](19|20)\d\d$/, "Date")
 end
 
 #Check whether a date is in ddmmyyyy format or not.  
-def validate_date_format_ddmmyyyy(date)
- if(is_string?(date))
-  if(date =~ /^(0[1-9]|[12][0-9]|3[01])[- \/.](0[1-9]|1[012])[- \/.](19|20)\d\d$/).nil?
-    puts "Invalid Date(ddmmyyyy) Format"
-  else
-    puts "Valid Date(ddmmyyyy) Format"
-  end
- else
-    puts "Error: Date value passed should be a string"
- end
-end
-
-
-#Age value is between 1 and 100 or not
-def valid_age?(value)
- value > 0 and value <= 100
-end
-
-#Check whether the age entered is in the given range or not.  
-def age_in_the_range?(range_start, range_end)
- if(is_integer?($settext) and is_integer?(range_start) and is_integer?(range_end))
-  if(valid_age?($settext) and valid_age?(range_start) and valid_age?(range_end))
-   ($settext >= range_start and $settext <= range_end) ? true : false
-  else
-   return "Error: Either the entered value or range is not between 1 and 100."
-  end
- else
-   return "Error: Either the entered value or range is not an integer."
- end
+#Valid date format "10/02/2015", "10-02-2015" and "10.02.2015".
+#For e.g valid_ddmmyyyy_date_format?(10-02-2015) will return false(and
+#print message 'Date should be a String.')
+#and valid_ddmmyyyy_date_format?("10-02-2015") will return true
+#and valid_ddmmyyyy_date_format?("42-10-2015") will return false(and
+#print message 'Invalid date format.')
+def valid_ddmmyyyy_date_format?(date)
+  is_valid_data_with_format?(date, /^(0[1-9]|[12][0-9]|3[01])[- \/.](0[1-9]|1[012])[- \/.](19|20)\d\d$/, "Date")
 end
 
 #Check whether e-mail adress supplied is valid or not.  
-def validate_email_address(email_id)
- if(is_string?(email_id))
-  if(email_id =~ /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/).nil?
-   puts "Error: Invalid E-mail id Format"
-  else
-   puts "Valid E-mail id Format"
-  end
- else
-    puts "Error: E-mail value passed should be a string"
- end
+#For e.g valid_email_id?("abc123@gmail.com") will return true
+#and valid_email_id?("abc123gmail.com") will return false(and
+#print message 'Invalid email format.')
+def valid_email_id?(email_id)
+  is_valid_data_with_format?(email_id, /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/, "Email")
+end
+
+#Mobile no. is of 10 digits or not.
+def valid_mobile_no_length?(mobile_no)
+ (mobile_no.to_s.length == 10) ? true : (puts "Mobile no. should be of 10 digits.")
+end
+
+#Mobile no. is valid or not.
+def is_valid_mobile_no?(mobile_no)
+  (mobile_no.to_i > 0) ? valid_mobile_no_length?(mobile_no) : false
 end
 
 #Check whether the indian mobile number entered is valid or not.  
-def validate_indian_mobile_number(mobile_no)
- if(is_string?(mobile_no) and mobile_no.to_i > 0)
-   if(mobile_no.length == 10)
-     if(mobile_no =~ /^([9]{1})([023456789]{1})([0-9]{8})$/).nil?
-       puts "Error: Invalid Mobile number format"
-     else
-       puts "Valid Mobile number format"
-     end
-   else
-    puts "Error: Mobile number should be of 10 digits"
-   end
- else
-   puts "Error: Invalid Mobile number format"
- end
-end
- 
-#Check whether the indian landline number entered is valid or not.  
-def validate_indian_landline_number(landline_no)#like "020-30303030"
- if(is_string?(landline_no) and landline_no.length == 12) #In India landline number should be of 10 digits including std code
-    #Here we will prefix "0" before std code and "-" between std code and the respective landline number
-    if(landline_no =~ /^[0]{1}[1-9]{1}[0-9]{1,3}[\-]{1}[1-9]{1}[0-9]{5,7}$/).nil?
-      puts "Wrong Landline number format"
-    else
-      puts "Correct Landline number format"
-    end
- else
-  puts "Error: Wrong Landline number format"
- end
+#Here valid means mobile no. will have the prefix 9, 8 or 7. It will not
+#tell whether that number exists or not.
+#For e.g valid_indian_mobile_number?(9123456789) will return false(and
+#print message 'Mobile no. should be a String.')
+# puts valid_indian_mobile_number?("9123456789") will return true
+# puts valid_indian_mobile_number?("91234567890")  will return false(and
+#print message 'Mobile no. should be of 10 digits.')
+def valid_indian_mobile_number?(mobile_no)
+ is_valid_mobile_no?(mobile_no) ? is_valid_data_with_format?(mobile_no, /^([9]{1}|[8]{1}|[7]{1})([0-9]{9})$/, "Mobile no.") : false
 end
 
-#Check whether the value entered contains a string or not.  
-def contain_chars?(char_set)
- is_string_contains_char_set?($settext, char_set)
+#Valid length of landline no. or not.
+def is_valid_length_of_landline_no?(landline_no)
+  (landline_no.to_s.length == 12) ? true : (puts "Landline no. should be of 11 digits(for e.g '0130-1234567').")
+end
+
+#Landline no. is valid or not.
+def is_valid_landline_no?(landline_no)
+  is_string?(landline_no) ? is_valid_length_of_landline_no?(landline_no) : (puts "Landline no. should be a String.")
+end
+ 
+#Check whether the indian landline number entered is valid or not. 
+#For e.g valid_indian_landline_number?(01303030303) will return false(and 
+#print message 'Landline no. should be a String.')
+#and valid_indian_landline_number?('0130-3030303') will return true
+#and valid_indian_landline_number?('0130-30303030') will return false(and 
+#print message 'Landline no. should be of 11 digits(for e.g '0130-1234567').')
+def valid_indian_landline_number?(landline_no)
+  is_valid_landline_no?(landline_no) ? is_valid_data_with_format?(landline_no, /^[0]{1}[1-9]{1}[0-9]{1,3}[\-]{1}[1-9]{1}[0-9]{5,7}$/, "Landline no.") : false
+end
+
+#Age data type format message.
+def age_data_type_format_msg
+  puts "Age should be an Integer."
+  return false
+end
+
+#Age value is between 1 and 100 or not.
+#For e.g valid_age?(100) will return true
+#and valid_age?("100") will return false(and print message 'Age should be an Integer.')
+#and valid_age?(-100) will return false
+def valid_age?(age)
+ is_integer?(age) ? (age > 0 and age <= 100) : age_data_type_format_msg
+end
+
+#Valid string and regular expression.
+def valid_string_and_reg_ex?(char_string, reg_exp)
+ str_flag = is_string?(char_string)
+ regex_flag = is_reg_exp?(reg_exp) 
+ puts "First argument should be a String." unless(str_flag)
+ puts "Second argument should be a Regular Expression." unless(regex_flag)
+ str_flag && regex_flag
+end
+
+#Valid strings.
+def valid_strings?(string1, string2)
+  str1_flag = is_string?(string1)
+  str2_flag = is_string?(string2)
+  puts "First argument should be a String." unless(str1_flag)
+  puts "Second argument should be a String." unless(str2_flag)
+  str1_flag && str2_flag
 end
 
 #Check whether a string contains a regular expression or not.  
-def is_string_contains_reg_exp_char_set?(char_string, char_set)
- flag = 0
- #Here char_set is a regular expression of characters
- #The format for regular expression of character set(or char_set) should be like /[$#!@^*&()~]/
- if( (char_string.sub(char_set, '**').index('**') ? true : false) == true )
-    flag = 1
-  end
-  flag == 1
+#For e.g 
+#is_string_contains_reg_exp?("ankurgera@gmail.com", /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/)
+#will return true
+#and is_string_contains_reg_exp?("ankurgeragmail.com", /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/)
+#will return false 
+def is_string_contains_reg_exp?(char_string, reg_exp)
+ (char_string.sub(reg_exp, '**').index('**') ? true : false) if(valid_string_and_reg_ex?(char_string, reg_exp))
 end
 
 #Check whether a string contains another string or not.  
-def is_string_contains_char_set?(char_string, char_set)
-  flag = 0
-  #Here char_set is a string of characters
-  char_set.each_byte do |char|
-   char_string.sub(char.chr.to_s, '**').index('**') ? flag = 1 : flag = 0
-  end
-  flag == 1
+#For e.g is_string_contains_another_string?("abc123@gmail.com", "123@g") will return true
+#and is_string_contains_another_string?("abc123@gmail.com", "13@g") will return false
+def is_string_contains_another_string?(char_string, char_set)
+  (char_string.sub(char_set, '**').index('**') ? true : false) if(valid_strings?(char_string, char_set))
 end
 
 end
