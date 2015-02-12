@@ -1,109 +1,118 @@
-About this Utility:
+About this gem:
     
-This is a utility developed for for writing Automation Test Scripts faster, simpler and easier through WATIR.
+This gem is developed for novice automation tester's to write automation scripts
+fast as it is very easy to use.
 
 Features:-
   
-1. No need to create an IE Instance.
+1. Freedom to choose the browser. Right now this gem is only tested with IE.
   
-2. Just include this gem and use it's parameterized methods(some of which are given as follows) :-
+     # ie = set_browser("ie")
+  
+2. Method name's are simple and easy to remember. For e.g:
+  
      # require 'watir_helper'
+     
+     # ie1 = set_browser("ie")
+     
+     # goto_page(ie1, "http://www.google.com/")
 
-     # goto_page("http://www.google.com")
+     # close_browser(ie1)
      
-     # set_texfield("name","q","Ruby")
+     # ie2 = set_browser("ie")
+
+     # goto_page(ie2, "http://rubygems.com/")
      
-     # click_button("name","btnG")
-     
-     # verify_text("Ruby")
-     
-     # close_browser()   
-    
-  Due to this feature Automation Testing task will be easier and faster because we have to just use the functions of this gem.
+     # close_browser(ie2)
+
+3. Data validations like email-id validation, date format(like mmddyyyy or ddmmyyyy) validation etc.
+   are also incorporated.
+
+4. For Pop-up handling, you have to just use one line named method's of this gem. It's that easy.
   
-3. All the methods are available in the lib/watir_helper folder for different type of elements of a website.
+   
+   # click_ok_js_popup("File Download")
   
-4. Pop-up handling is very easy, you have to just use one line named method's of this gem and boom you can easily
-   handle pop-up's. It's that easy.
+   
+   # click_save_saveas_popup("Save As", "C://Test_Data")
   
-5. Can add new features into this gem as WATIR is an Open Source tool.
+
+5. You can add new features into this gem.
   
-  
+
 Prerequisites:
 
-Install Ruby: http://ruby-lang.org
+Install Ruby: 
     
-First you need to install Ruby using the one-click installer for Windows. 
+  First you need to install Ruby using the one-click installer for Windows from
+  http://ruby-lang.org . 
 
 Install Watir:
    
-Watir is packaged as a gem, a Ruby library that can be installed over the internet.
+  Watir is packaged as a gem, a Ruby library that can be installed over the internet.
 
-To install it, type this at command prompt:
+  To install it, type this at command prompt:
+ 
   gem install watir
-  
-Install rspec :
-  
- gem install rspec 
   
 Install rake :
   
- gem install rake 
+  gem install rake 
 
 Install IE Developer Toolbar from the site :
  
-  http://www.microsoft.com/downloads/details.aspx?familyid=e59c3964-672d-4511-bb3e-2d5e1db91038&displaylang=en
+  http://www.microsoft.com/en-in/download/details.aspx?id=18359
 
 How To Use:
- This only works on Windows. Requires Internet Explorer 5.5 or newer.
+ 
+  This only works on Windows. Requires Internet Explorer 5.5 or newer.
 
-Typical Usage :
+  Typical Usage :
    
-     # Include my utility(watir_helper)
+     # Include the gem 'watir_helper'
    
         require 'watir_helper'
-   
+
+     # Set browser   
+        ie = set_browser("ie")
+
      # Supply Google url to goto_page
    
-        goto_page("http://www.google.com/")
+        goto_page(ie, "http://www.google.com/")
    
      # Display title of the current browser page
    
-        puts get_title
+        puts get_title(ie)
    
      # Display url of the current browser page
    
-        puts get_url
+        puts get_url(ie)
    
      # Flash the Google logo on the home page   
    
-        flash_image("id","logo")
+        flash_image(ie, "id", "logo")
    
      # Check whether Google logo image exists or not
    
-        puts exists_image?("id","logo")
+        puts exists_image?(ie, "id", "logo")
    
      # Set the search field to Ruby
    
-        set_textfield("name","q","Ruby")
+        set_textfield(ie, "name", "q", "Ruby")
    
      # Highlight the Google Search button
    
-        flash_button("value","Google Search")
+        flash_button(ie, "value", "Google Search")
    
      # Click the Google Search button
    
-        click_button("value","Google Search")
+        click_button(ie, "value", "Google Search")
 
 Contacts:
     
   The mailing list: http://groups.google.com/group/watir-general
     
   E-mail :- ankurgera@gmail.com
-            yashasree.barve@gmail.com
-             
+                         
 Contributors:
  Ankur Gera
- Yashasree Barve
-   
-Thanks for your ideas and support.
