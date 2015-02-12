@@ -1,35 +1,35 @@
 #******************************************************
 #Helpers other than Common Helpers
 #******************************************************
-require "../lib/watir_helper/button_helper"
+require File.expand_path('button_helper', File.dirname(__FILE__))
 include ButtonHelper
-require "../lib/watir_helper/checkbox_helper"
+require File.expand_path('checkbox_helper', File.dirname(__FILE__))
 include CheckBoxHelper
-require "../lib/watir_helper/frame_helper"
+require File.expand_path('frame_helper', File.dirname(__FILE__))
 include FrameHelper
-require "../lib/watir_helper/image_helper"
+require File.expand_path('image_helper', File.dirname(__FILE__))
 include ImageHelper
-require "../lib/watir_helper/link_helper"
+require File.expand_path('link_helper', File.dirname(__FILE__))
 include LinkHelper
-require "../lib/watir_helper/popup_handling_helper"
+require File.expand_path('popup_handling_helper', File.dirname(__FILE__))
 include PopupHelper
-require "../lib/watir_helper/radio_button_helper"
+require File.expand_path('radio_button_helper', File.dirname(__FILE__))
 include RadioButtonHelper
-require "../lib/watir_helper/select_list_helper"
+require File.expand_path('select_list_helper', File.dirname(__FILE__))
 include SelectListHelper
-require "../lib/watir_helper/textfield_helper"
+require File.expand_path('textfield_helper', File.dirname(__FILE__))
 include TextFieldHelper
-require "../lib/watir_helper/validations_helper"
+require File.expand_path('validations_helper', File.dirname(__FILE__))
 include ValidationsHelper
-require "../lib/watir_helper/browser_helper"
+require File.expand_path('browser_helper', File.dirname(__FILE__))
 include BrowserHelper
-require "../lib/watir_helper/login_helper"
+require File.expand_path('login_helper', File.dirname(__FILE__))
 include LoginHelper
-require "../lib/watir_helper/span_helper"
+require File.expand_path('span_helper', File.dirname(__FILE__))
 include SpanHelper
-require "../lib/watir_helper/table_helper"
+require File.expand_path('table_helper', File.dirname(__FILE__))
 include TableHelper
-require "../lib/watir_helper/div_helper"
+require File.expand_path('div_helper', File.dirname(__FILE__))
 include DivHelper
 
 

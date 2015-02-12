@@ -1,6 +1,7 @@
 #******************************************************
 #Pop-up handling methods
 #******************************************************
+require File.expand_path('common_helpers', File.dirname(__FILE__))
 
 module PopupHelper
 

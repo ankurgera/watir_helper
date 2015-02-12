@@ -1,7 +1,7 @@
 #******************************************************
 #Link methods
 #******************************************************
-require '../lib/watir_helper/common_helpers'
+require File.expand_path('common_helpers', File.dirname(__FILE__))
 
 module LinkHelper
 
