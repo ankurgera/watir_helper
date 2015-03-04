@@ -107,12 +107,17 @@ def valid_age?(age)
  is_integer?(age) ? (age > 0 and age <= 100) : age_data_type_format_msg
 end
 
+#Print invalid data type msg.
+def arg_invalid_type_msg(arg_pos, data_type_expected)
+ puts "#{arg_pos} argument should be a #{data_type_expected}." 
+end
+
 #Valid string and regular expression.
 def valid_string_and_reg_ex?(char_string, reg_exp)
  str_flag = is_string?(char_string)
  regex_flag = is_reg_exp?(reg_exp) 
- puts "First argument should be a String." unless(str_flag)
- puts "Second argument should be a Regular Expression." unless(regex_flag)
+ arg_invalid_type_msg("First", "String") unless(str_flag)
+ arg_invalid_type_msg("Second", "Regular Expression") unless(regex_flag)
  str_flag && regex_flag
 end
 
@@ -120,8 +125,8 @@ end
 def valid_strings?(string1, string2)
   str1_flag = is_string?(string1)
   str2_flag = is_string?(string2)
-  puts "First argument should be a String." unless(str1_flag)
-  puts "Second argument should be a String." unless(str2_flag)
+  arg_invalid_type_msg("First", "String") unless(str1_flag)
+  arg_invalid_type_msg("Second", "String") unless(str2_flag)
   str1_flag && str2_flag
 end
 
@@ -132,14 +137,14 @@ end
 #and is_string_contains_reg_exp?("ankurgeragmail.com", /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/)
 #will return false 
 def is_string_contains_reg_exp?(char_string, reg_exp)
- (char_string.sub(reg_exp, '**').index('**') ? true : false) if(valid_string_and_reg_ex?(char_string, reg_exp))
+  (valid_string_and_reg_ex?(char_string, reg_exp) == true) ? (char_string.sub(reg_exp, '**').index('**') ? true : false) : false 
 end
 
 #Check whether a string contains another string or not.  
 #For e.g is_string_contains_another_string?("abc123@gmail.com", "123@g") will return true
 #and is_string_contains_another_string?("abc123@gmail.com", "13@g") will return false
 def is_string_contains_another_string?(char_string, char_set)
-  (char_string.sub(char_set, '**').index('**') ? true : false) if(valid_strings?(char_string, char_set))
+  (valid_strings?(char_string, char_set) == true) ? (char_string.sub(char_set, '**').index('**') ? true : false) : false
 end
 
 end

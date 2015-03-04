@@ -12,12 +12,17 @@ end
 
 #Clear selection from a Select list.
 def clear_selection_from_select_list(browser_handle, property, property_value)
-  browser_handle.select_list(property.intern, /#{property_value}/).clearSelection
+  browser_handle.select_list(property.intern, /#{property_value}/).clear
+end
+
+#Get selected contents of a Select list.
+def get_selected_contents_of_select_list(browser_handle, property, property_value)
+  browser_handle.select_list(property.intern, /#{property_value}/).selected_options.map(&:text)
 end
 
 #Get all contents of a Select list.
 def get_all_contents_of_select_list(browser_handle, property, property_value)
-  browser_handle.select_list(property.intern, /#{property_value}/).getAllContents
+  browser_handle.select_list(property.intern, /#{property_value}/).options.map(&:text)
 end
 
 #Highlight or Flash a Select list.  

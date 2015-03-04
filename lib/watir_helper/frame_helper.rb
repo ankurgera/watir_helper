@@ -165,6 +165,11 @@ def is_value_selected_from_select_list_inside_frame?(browser_handle, frame_prop,
   browser_handle.frame(frame_prop.intern, /#{frame_prop_val}/).select_list(select_list_prop.intern, /#{select_list_prop_val}/).selected?(selected_value)
 end
 
+#Frame contains text or not
+def frame_contains_text?(browser_handle, frame_prop, frame_prop_val, text_to_verified)
+  browser_handle.frame(frame_prop.intern, /#{frame_prop_val}/).text.include?(text_to_verified)
+end
+
 end
 
 

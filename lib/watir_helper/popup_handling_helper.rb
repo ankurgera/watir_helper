@@ -13,12 +13,6 @@ def click_button_popup(title, button_id)
   window.button(:value => /#{button_id}/).click
 end
 
-#Pop-up window exists
-def popup_exists_with_title?(title)
-  window = RAutomation::Window.new(:title => /#{title}/)
-  window.exists?
-end
-
 #Click "OK" button on a javascript pop-up.
 def click_ok_js_popup(title)
   click_button_popup(title, "OK")

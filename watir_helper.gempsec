@@ -6,7 +6,7 @@ require 'rake/testtask'
 
 spec = Gem::Specification.new do |s|
   s.name = "watir_helper"
-  s.version = "1.0.1"
+  s.version = "1.0.3"
   s.platform = Gem::Platform::RUBY
   s.authors = ["Ankur Gera"]
   s.email = "ankurgera@gmail.com"
@@ -16,4 +16,7 @@ spec = Gem::Specification.new do |s|
                fast as it is very easy to use.}
   s.files =  %x{git ls-files}.split("\n")
   s.require_paths = ["lib"]
+  s.add_dependency "watir"
+  s.add_dependency "rautomation"
+  s.add_dependency "rspec"
 end

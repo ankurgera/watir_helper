@@ -35,4 +35,9 @@ def exists_div?(browser_handle, property, property_value)
   browser_handle.div(property.intern, /#{property_value}/).exists?
 end
 
+#Get div text
+def get_div_text(browser_handle, property, property_value)
+  browser_handle.div(property.intern, /#{property_value}/).text
+end
+
 end
